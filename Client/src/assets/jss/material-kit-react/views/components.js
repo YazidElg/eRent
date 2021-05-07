@@ -33,7 +33,14 @@ const componentsStyle = {
   },
   textCenter: {
     textAlign: "center"
-  }
+  },
+  formControl: {
+    margin: 10,
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: 0,
+  },
 };
 
 export default componentsStyle;

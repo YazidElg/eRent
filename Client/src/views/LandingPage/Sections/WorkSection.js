@@ -20,18 +20,16 @@ export default function WorkSection() {
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
-          <h2 className={classes.title}>Work with us</h2>
+          <h2 className={classes.title}>Contactez-nous</h2>
           <h4 className={classes.description}>
-            Divide details about your product or agency work into parts. Write a
-            few lines about each one and contact us about any further
-            collaboration. We will responde get back to you in a couple of
-            hours.
+           Si vous avez une réclamation ou n'importe quel message, vous pouvez nous contactez en remplissant
+           le formulaire ci-dessous
           </h4>
           <form>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
-                  labelText="Your Name"
+                  labelText="Votre nom"
                   id="name"
                   formControlProps={{
                     fullWidth: true
@@ -40,7 +38,7 @@ export default function WorkSection() {
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
-                  labelText="Your Email"
+                  labelText="Votre Email"
                   id="email"
                   formControlProps={{
                     fullWidth: true
@@ -48,7 +46,7 @@ export default function WorkSection() {
                 />
               </GridItem>
               <CustomInput
-                labelText="Your Message"
+                labelText="Votre message"
                 id="message"
                 formControlProps={{
                   fullWidth: true,
@@ -60,7 +58,7 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary">Envoyer </Button>
               </GridItem>
             </GridContainer>
           </form>
