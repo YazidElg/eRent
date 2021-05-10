@@ -42,7 +42,7 @@ export default function TeamSection() {
               <h4 className={classes.cardTitle}>
                Egharbi Yazid
                 <br />
-                <small className={classes.smallTitle}>Front-end Dev</small>
+                <small className={classes.smallTitle}>Model</small>
               </h4>
               <CardBody>
                 <p className={classes.description}>
@@ -121,7 +121,7 @@ export default function TeamSection() {
               <h4 className={classes.cardTitle}>
                 Ayman El Kaddioui
                 <br />
-                <small className={classes.smallTitle}>Back-end Dev</small>
+                <small className={classes.smallTitle}>Model</small>
               </h4>
               <CardBody>
                 <p className={classes.description}>

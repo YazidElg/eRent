@@ -37,7 +37,7 @@ export default function Footer(props) {
                 className={classes.block}
                 target="_blank"
               >
-                Creative Tim
+                eRent
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -70,16 +70,8 @@ export default function Footer(props) {
           </List>
         </div>
         <div className={classes.right}>
-          &copy; {1900 + new Date().getYear()} , made with{" "}
-          <Favorite className={classes.icon} /> by{" "}
-          <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
-            className={aClasses}
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
+          &copy; {1900 + new Date().getYear()} , Projet fin d'étude créer par : Nabil Bakour, Yazid Elgharbi et Ayman El Kaddioui
+         
         </div>
       </div>
     </footer>

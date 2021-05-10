@@ -35,16 +35,41 @@ import { Grid, InputLabel } from "@material-ui/core";
 import { FormControl } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import { Select } from "@material-ui/core";
-import Slider from '@material-ui/core/Slider';
+import Slider from "nouislider";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 import WelcomeSection from "views/LandingPage/Sections/WelcomeSection.js";
 import TeamSection from "views/LandingPage/Sections/TeamSection.js";
 import WorkSection from "views/LandingPage/Sections/WorkSection.js";
 import SectionsProduit from "./Sections/SectionProduit.js";
+
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {
+  React.useEffect(() => {
+    if (
+      !document.getElementById("sliderDouble1")
+      .classList.contains("noUi-target")
+    ) {
+      Slider.create(document.getElementById("sliderDouble1"), {
+        start: [20, 60],
+        connect: [false, true, false],
+        step: 1,
+        range: { min: 0, max: 100 }
+      });
+    }
+    if (
+      !document.getElementById("sliderDouble2").classList.contains("noUi-target")
+    ) {
+      Slider.create(document.getElementById("sliderDouble2"), {
+        start: [20, 60],
+        connect: [false, true, false],
+        step: 1,
+        range: { min: 0, max: 100 }
+      });
+    }
+    return function cleanup() {};
+  });
   const classes = useStyles();
   const [value, setValue] = React.useState([20, 37]);
   const handleChange = (event, newValue) => {
@@ -74,7 +99,7 @@ export default function Components(props) {
               </h4>
               <Grid>
                 <GridContainer>
-                  <GridItem xs={6} sm={3} md={2}>
+                  <Grid item xs={12} sm={12} md={5}  >
                     <CustomInput
                       id="input_search"
                       inputProps={{
@@ -84,7 +109,9 @@ export default function Components(props) {
                         fullWidth: true,
                       }}
                     />
-                     <GridItem xs={6} sm={3} md={2}>
+                    </Grid>
+                    <Grid>
+                     <Grid itemxs={12} sm={12} md={4}>
                     <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-autowidth-label">
                         Ville
@@ -93,19 +120,18 @@ export default function Components(props) {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                       >
-                        <MenuItem value="Appartement">Appartement</MenuItem>
-                        <MenuItem value="Studio">Studio</MenuItem>
-                        <MenuItem value="Residence étudiants">
-                          Residence étudiants
+                        <MenuItem value="Salé">Salé</MenuItem>
+                        <MenuItem value="Rabat">Rabat</MenuItem>
+                        <MenuItem value="Casablance"> Casablanca
                         </MenuItem>
-                        <MenuItem value="Cité universitaire">
-                          Cité universitaire
-                        </MenuItem>
+                        
                       </Select>
                     </FormControl>
-                    </GridItem>
-                  </GridItem>
-                  <GridItem xs={6} sm={3} md={2}>
+                    </Grid>
+                  </Grid>
+                  
+                  <Grid>
+                  <Grid item xs={12} sm={12} md={3} >
                     <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-autowidth-label">
                         Mode
@@ -118,8 +144,10 @@ export default function Components(props) {
                         <MenuItem value="Colocation">Colocation</MenuItem>
                       </Select>
                     </FormControl>
-                  </GridItem>
-                  <GridItem xs={6} sm={3} md={2}>
+                  </Grid>
+                  </Grid>
+                  <Grid>
+                    <Grid item xs={12} sm={12} md={3}>
                     <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-autowidth-label">
                         Categorie
@@ -138,33 +166,16 @@ export default function Components(props) {
                         </MenuItem>
                       </Select>
                     </FormControl>
-                   
-                  </GridItem>
+                   </Grid>
+                  </Grid>
                   <GridItem>
                  
-                      <span className="slide-title">Prix (dh)</span>
-                      <Slider
-                      
-                       onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="range-slider"
-                        min={0}
-                        max={5000}
-                        step={500}
-                      />
+                      <span className="slide-title">Prix max (dh)</span>
+                      <div id="sliderDouble1" className="slider-info" />
                     
                   
-                      <span className="slide-title">Superficie (m²)</span>
-                      <Slider
-                       
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="range-slider"
-                        
-                        min={0}
-                        max={300}
-                        step={10}
-                      />
+                      <span className="slide-title">Superficie max (m²)</span>
+                      <div id="sliderDouble2" className="slider-info" />
                    
                
                   </GridItem>
@@ -177,29 +188,14 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
+       
         <SectionsProduit />
         <WelcomeSection />
         <TeamSection />
         <WorkSection />
 
-        <SectionNavbars />
-        <SectionTabs />
-        <SectionPills />
-        <SectionNotifications />
-        <SectionTypography />
-        <SectionJavascript />
-        <SectionCarousel />
-        <SectionCompletedExamples />
-        <SectionLogin />
-        <GridItem md={12} className={classes.textCenter}>
-          <Link to={"/login-page"} className={classes.link}>
-            <Button color="primary" size="lg" simple>
-              View Login Page
-            </Button>
-          </Link>
-        </GridItem>
-        <SectionExamples />
-        <SectionDownload />
+        
+       
       </div>
       <Footer />
     </div>
