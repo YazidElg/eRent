@@ -70,6 +70,24 @@ app.post("/deposer", (req, res) =>{
 
 })
 
+app.post("/voirdetaillogement", (req, res) =>{
+
+    console.log(req.body);
+    const nomE = req.body.nom
+    const prenomE = req.body.prenom
+    const telephoneE = req.body.telephone
+    const emailE = req.body.email
+    const periodeE = req.body.periode
+
+
+    db.query("INSERT INTO reservation (nomE, prenomE, telephoneE, emailE, periodeE) VALUES (?,?,?,?,?)", [nomE, prenomE, telephoneE, emailE, periodeE],
+    (err, result) => {
+        console.log(err);
+    })
+
+})
+
+
 app.listen(3001, () => {
     console.log("running on port 3001")
 })
