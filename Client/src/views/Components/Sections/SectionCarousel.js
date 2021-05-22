@@ -37,12 +37,7 @@ export default function SectionCarousel() {
               <Carousel {...settings}>
                 <div>
                   <img src={image1} alt="First slide" className="slick-image" />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
-                    </h4>
-                  </div>
+                  
                 </div>
                 <div>
                   <img
@@ -50,21 +45,11 @@ export default function SectionCarousel() {
                     alt="Second slide"
                     className="slick-image"
                   />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Somewhere Beyond, United States
-                    </h4>
-                  </div>
+                  
                 </div>
                 <div>
                   <img src={image3} alt="Third slide" className="slick-image" />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
-                    </h4>
-                  </div>
+                  
                 </div>
               </Carousel>
             </Card>

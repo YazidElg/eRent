@@ -17,13 +17,10 @@ import CardHeader from "components/Card/CardHeader.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.js";
 
-import team1 from "assets/img/faces/avatar.jpg";
-import team2 from "assets/img/faces/christian.jpg";
-import team3 from "assets/img/faces/kendall.jpg";
 
 const useStyles = makeStyles(styles);
 
-export default function TeamSection() {
+export default function SectionProduit() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
