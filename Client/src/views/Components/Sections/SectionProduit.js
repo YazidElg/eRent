@@ -17,13 +17,10 @@ import CardHeader from "components/Card/CardHeader.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.js";
 
-import team1 from "assets/img/faces/avatar.jpg";
-import team2 from "assets/img/faces/christian.jpg";
-import team3 from "assets/img/faces/kendall.jpg";
 
 const useStyles = makeStyles(styles);
 
-export default function TeamSection() {
+export default function SectionProduit() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
@@ -44,7 +41,7 @@ export default function TeamSection() {
                     <h4>Location, Studio</h4>
                     </CardHeader>
               <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                <img src='https://lh3.googleusercontent.com/proxy/u595VJVMSOgZ3SM7zb88lFA_1heHUfID6hfeuTXQ3cYtFnrUCR6Pa3uLyMDUTekn9iFvbY6SJAepfv-Q8xmJ9Eb2ezD6Exk8p8gsattTw-UwHz1PNGaqkk1pYVxq2aZaepzFCuHZ7hZMKpv7d8_T7uwSAIN5PiHBmWuqXiCOKU6dXiS_7fiT7kDYqhMgdn9n8Q' alt="..." className={imageClasses} />
+                <img src='https://i.pinimg.com/originals/33/89/32/3389325e9751732d99812f5637edc963.jpg' alt="..." className={imageClasses} />
               </GridItem>
               <h4 className={classes.cardTitle}>
                Appartement à louer
@@ -69,7 +66,7 @@ export default function TeamSection() {
                     <h4>Collocation, résidence étudiants</h4>
                     </CardHeader>
               <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                <img src='https://lh3.googleusercontent.com/proxy/u595VJVMSOgZ3SM7zb88lFA_1heHUfID6hfeuTXQ3cYtFnrUCR6Pa3uLyMDUTekn9iFvbY6SJAepfv-Q8xmJ9Eb2ezD6Exk8p8gsattTw-UwHz1PNGaqkk1pYVxq2aZaepzFCuHZ7hZMKpv7d8_T7uwSAIN5PiHBmWuqXiCOKU6dXiS_7fiT7kDYqhMgdn9n8Q' alt="..." className={imageClasses} />
+                <img src='https://i.pinimg.com/originals/33/89/32/3389325e9751732d99812f5637edc963.jpg' alt="..." className={imageClasses} />
               </GridItem>
               <h4 className={classes.cardTitle}>
                Appartement à louer
@@ -94,7 +91,7 @@ export default function TeamSection() {
                     <h4>Collocation, appartement</h4>
                     </CardHeader>
               <GridItem xs={12} sm={12} md={6} className={classes.itemGrid}>
-                <img src='https://lh3.googleusercontent.com/proxy/u595VJVMSOgZ3SM7zb88lFA_1heHUfID6hfeuTXQ3cYtFnrUCR6Pa3uLyMDUTekn9iFvbY6SJAepfv-Q8xmJ9Eb2ezD6Exk8p8gsattTw-UwHz1PNGaqkk1pYVxq2aZaepzFCuHZ7hZMKpv7d8_T7uwSAIN5PiHBmWuqXiCOKU6dXiS_7fiT7kDYqhMgdn9n8Q' alt="..." className={imageClasses} />
+                <img src='https://i.pinimg.com/originals/33/89/32/3389325e9751732d99812f5637edc963.jpg' alt="..." className={imageClasses} />
               </GridItem>
               <h4 className={classes.cardTitle}>
                Appartement à louer
