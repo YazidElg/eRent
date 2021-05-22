@@ -18,6 +18,7 @@ import TeamSection from "views/LandingPage/Sections/TeamSection.js";
 import WorkSection from "views/LandingPage/Sections/WorkSection.js";
 import SectionsProduit from "../Sections/SectionProduit.js";
 
+
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {
@@ -54,6 +55,7 @@ export default function Components(props) {
   
   return (
     <div>
+     
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionsProduit />
         <WelcomeSection />

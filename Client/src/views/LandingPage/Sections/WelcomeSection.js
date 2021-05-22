@@ -5,12 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Search from "@material-ui/icons/Search";
 import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
-import MapIcon from '@material-ui/icons/Map';
+import MapIcon from "@material-ui/icons/Map";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -23,8 +22,8 @@ export default function WelcomeSection() {
         <GridItem xs={12} sm={12} md={8}>
           <h2 className={classes.title}>Bienvenue dans notre site</h2>
           <h5 className={classes.description}>
-            Premier site marocain dédié aux étudiants pour trouver leurs logement moins chère et le plus rapidement possible
-
+            Premier site marocain dédié aux étudiants pour trouver leurs
+            logement moins chère et le plus rapidement possible
           </h5>
         </GridItem>
       </GridContainer>
