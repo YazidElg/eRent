@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/material-kit-react/views/components.js";
@@ -15,12 +15,34 @@ import GridItem from "components/Grid/GridItem.js";
 
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
+import Axios from "axios";
 
 const useStyles = makeStyles(styles);
 
 const SearchBar = () => {
+  const [Ville, SetVille] = useState("all");
+  const [Univ, SetUniv] = useState([]);
   const classes = useStyles();
-console.log(classes);
+  console.log(classes);
+
+  const VilleChange = (e) => {
+    SetVille(e.target.value);
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      params: { ville: e.target.value },
+    };
+    Axios.get("http://localhost:3001/University", config)
+      .then((result) => {
+        console.log(result.data.res);
+        SetUniv(result.data.res);
+      })
+      .catch((err) => {
+        // Do somthing
+      });
+  };
+
   return (
     <Parallax image={require("assets/img/image_3.png")}>
       <div className={classes.container}>
@@ -44,13 +66,37 @@ console.log(classes);
                   <Grid item xs={12} sm={12} md={4}>
                     <FormControl className={classes.formControl}>
                       <InputLabel id="demo-simple-select-autowidth-label">
-                        Ville
+                        Université
                       </InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                       >
-                        <MenuItem value="Salé">Salé</MenuItem>
+                        <MenuItem value="all">Tous</MenuItem>
+                        {Univ.map((univ, index) => (
+                          <MenuItem key={index} value={index}>
+                            {univ.nom}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </Grid>
+
+                <Grid>
+                  <Grid item xs={12} sm={12} md={4}>
+                    <FormControl className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-autowidth-label">
+                        Ville
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        onChange={VilleChange}
+                        value={Ville}
+                      >
+                        <MenuItem value="all">Tous</MenuItem>
+                        <MenuItem value="salé">Salé</MenuItem>
                         <MenuItem value="Rabat">Rabat</MenuItem>
                         <MenuItem value="Casablance"> Casablanca</MenuItem>
                       </Select>
@@ -105,7 +151,6 @@ console.log(classes);
                 </GridItem>
               </GridContainer>
             </Grid>
-
             <Link to="/Search">
               <Button color="warning">Rechercher</Button>
             </Link>
