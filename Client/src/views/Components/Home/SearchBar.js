@@ -51,7 +51,7 @@ const SearchBar = () => {
             <h4 className={classes.cardTitle}>CHERCHER VOTRE APPART DE REVE</h4>
             <Grid>
               <GridContainer>
-                <Grid item xs={12} sm={12} md={5}>
+                <Grid item xs={11}>
                   <CustomInput
                     id="input_search"
                     inputProps={{
