@@ -26,6 +26,7 @@ app.get("/University", (req, res) => {
 app.post("/Search", (req, res) => {
   console.log(req.body);
   const search = req.body.search;
+  const Univ = req.body.univ;
   const city = req.body.city;
   const mode = req.body.mode;
   const Catg = req.body.Catg;
@@ -35,79 +36,39 @@ app.post("/Search", (req, res) => {
   const prU = req.body.prU;
   console.log("/////////////// search : " + search);
 
-  if (
-    (search.toLowerCase().includes("ecole") ||
-      search.toLowerCase().includes("école") ||
-      search.toLowerCase().includes("université") ||
-      search.toLowerCase().includes("universite") ||
-      search.toLowerCase().includes("faculté") ||
-      search.toLowerCase().includes("faculte")) &&
-    search.length > 18
-  ) {
-    const sql = "SELECT * FROM universite WHERE nom like ? ";
-    db.query(sql, ["%" + search + "%"], (err, result) => {
-      if (err == null) {
-        lat = result[0].latitude_univ;
-        lag = result[0].longitude_univ;
+  Univget =
+    Univ == "all"
+      ? ""
+      : ",getDistance(latitude_loc,longitude_loc, '" + Univ + "') as distance";
+  UnivHav = Univ == "all" ? "" : " HAVING distance < 1.5 ORDER BY distance";
+  md = mode == "all" ? "" : " and mode = '" + mode + "' ";
+  ct = Catg == "all" ? "" : " and type = '" + Catg + "' ";
+  cit = city == "all" ? "" : " and ville = '" + city + "' ";
+  sh =
+    search == ""
+      ? ""
+      : " and ( titre like '%" +
+        search +
+        "%' or description like '%" +
+        search +
+        "%' )";
 
-        md = "";
-        if (mode != "all") md = " and mode = '" + mode + "' ";
-        ct = "";
-        if (Catg != "all") ct = " and type = '" + Catg + "' ";
+  md = mode != "all" ? " and mode = '" + mode + "' " : "";
+  ct = Catg != "all" ? " and type = '" + Catg + "' " : "";
 
-        sql2 =
-          "SELECT *, getDistance(latitude_loc,longitude_loc, ?, ?) as distance FROM location where ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
-          md +
-          ct +
-          " HAVING distance < 1.5 ORDER BY distance";
-        db.query(sql2, [lat, lag, prL, prU, supL, supU], (result2) => {
-          if (result2.length != 0) {
-            res.send({ res: result2, msg: 0 });
-          } else res.send({ msg: 2 });
-        });
-      } else res.send({ msg: 1 });
-    });
-  } else {
-    md = mode != "all" ? " and mode = '" + mode + "' " : "";
-    ct = Catg != "all" ? " and type = '" + Catg + "' " : "";
-
-    sql2 =
-      "SELECT * FROM location where ( titre like ? or description like ? ) and  ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
-      md +
-      ct;
-    db.query(
-      sql2,
-      [["%" + search + "%"], ["%" + search + "%"], prL, prU, supL, supU],
-      (result2) => {
-        if (result2.length != 0) {
-          res.send({ res: result2, msg: 0 });
-        } else res.send({ msg: 2 });
-      }
-    );
-  }
-
-  //     (err, result) => {
-  //     if (result.length != 0) {
-  //       lat = result[0].latitude_univ;
-  //       lag = result[0].longitude_univ;
-
-  //       md = "";
-  //       if (mode != "all") md = " and mode = '" + mode + "' ";
-  //       ct = "";
-  //       if (Catg != "all") ct = " and type = '" + Catg + "' ";
-
-  //       sql2 =
-  //         "SELECT *, getDistance(latitude_loc,longitude_loc, ?, ?) as distance FROM location where ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
-  //         md +
-  //         ct +
-  //         " HAVING distance < 1.5 ORDER BY distance";
-  //       db.query(sql2, [lat, lag, prL, prU, supL, supU], (result2) => {
-  //         if (result2.length != 0) {
-  //           res.send({ res: result2, msg: 0 });
-  //         } else res.send({ msg: 2 });
-  //       });
-  //     } else res.send({ msg: 1 });
-  //   });
+  sql2 =
+    "SELECT * " +
+    Univget +
+    " FROM location where 1 and ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
+    sh +
+    md +
+    ct +
+    cit +
+    UnivHav;
+  db.query(sql2, [prL, prU, supL, supU], (err, result2) => {
+    if (err) console.log(err);
+    else res.send({ res: result2, msg: 0 });
+  });
 });
 
 app.post("/deposer", (req, res) => {
