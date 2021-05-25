@@ -17,12 +17,39 @@ import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Axios from "axios";
 
-const useStyles = makeStyles(styles);
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
 
+const useStyles = makeStyles(styles);
+const useStyles2 = makeStyles(() => ({
+  thumb: {
+    background: "#ff871c",
+    "&~&": {
+      background: "#ff871c",
+    },
+  },
+  mark: {
+    background: "#ff871c",
+  },
+  rail: {
+    background:
+      "linear-gradient(to right, #ff871c, orange 50%, orange 50%, #ff871c);",
+  },
+  track: {
+    background: "#ff871c",
+  },
+  valueLabel: {
+    right: "100%",
+    "&>*": {
+      background: "#ff871c",
+    },
+  },
+}));
 const SearchBar = () => {
   const [Ville, SetVille] = useState("all");
   const [Univ, SetUniv] = useState([]);
   const classes = useStyles();
+  const classes2 = useStyles2();
   console.log(classes);
 
   const VilleChange = (e) => {
@@ -43,6 +70,17 @@ const SearchBar = () => {
       });
   };
 
+  const [value, setValue] = React.useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const [value2, setValue2] = React.useState([20, 37]);
+
+  const handleChange2 = (event, newValue) => {
+    setValue2(newValue);
+  };
   return (
     <Parallax image={require("assets/img/image_3.png")}>
       <div className={classes.container}>
@@ -143,11 +181,26 @@ const SearchBar = () => {
                   </Grid>
                 </Grid>
                 <GridItem>
-                  <span className="slide-title">Prix max (dh)</span>
-                  <div id="sliderDouble1" className="slider-info" />
-
-                  <span className="slide-title">Superficie max (m²)</span>
-                  <div id="sliderDouble2" className="slider-info" />
+                  <Typography id="range-slider" gutterBottom>
+                    Prix
+                  </Typography>
+                  <Slider
+                    classes={classes2}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    aria-labelledby="range-slider"
+                  />
+                  <Typography id="range-slider" gutterBottom>
+                    Surface
+                  </Typography>
+                  <Slider
+                    classes={classes2}
+                    value={value2}
+                    onChange={handleChange2}
+                    valueLabelDisplay="auto"
+                    aria-labelledby="range-slider"
+                  />
                 </GridItem>
               </GridContainer>
             </Grid>
