@@ -26,18 +26,17 @@ export default function SectionCarousel() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false
+    autoplay: false,
   };
   return (
     <div className={classes.section}>
       <div className={classes.container}>
         <GridContainer>
-          <GridItem xs={12} sm={12} md={8} className={classes.marginAuto}>
+          <GridItem xs={12}>
             <Card carousel>
               <Carousel {...settings}>
                 <div>
                   <img src={image1} alt="First slide" className="slick-image" />
-                  
                 </div>
                 <div>
                   <img
@@ -45,11 +44,9 @@ export default function SectionCarousel() {
                     alt="Second slide"
                     className="slick-image"
                   />
-                  
                 </div>
                 <div>
                   <img src={image3} alt="Third slide" className="slick-image" />
-                  
                 </div>
               </Carousel>
             </Card>

@@ -8,23 +8,35 @@ import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import SearchBar from "./Home/SearchBar.js";
-
+import Result from "./SearchResult";
 
 const Index = (props) => {
   const { ...rest } = props;
-  
+
   return (
     <>
-     
-     
       <Switch>
+        <Route path="/Search/:id" exact render={(props) => <VoirPlus />} />
         <Route
-          path="/Search/:id"
+          path="/Search"
           exact
-          render={(props) => <VoirPlus/>}
+          render={() => (
+            <>
+              <SearchBar />
+              <Result {...props} />
+            </>
+          )}
         />
-        <Route path="/Search" exact render={()=>  <SearchBar/> } />
-        <Route path="/" exact render={(props) => <><SearchBar /><Components {...props} /></>} />
+        <Route
+          path="/"
+          exact
+          render={(props) => (
+            <>
+              <SearchBar />
+              <Components {...props} />
+            </>
+          )}
+        />
       </Switch>
     </>
   );
