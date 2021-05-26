@@ -59,7 +59,7 @@ app.post("/Search", (req, res) => {
   sql2 =
     "SELECT * " +
     Univget +
-    " FROM location where 1 and ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
+    " ,getimage(id_loc) as image FROM location where 1 and ( prix >= ? and prix <= ? ) and ( superficie >= ? and superficie <= ? ) " +
     sh +
     md +
     ct +
