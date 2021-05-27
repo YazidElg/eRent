@@ -6,9 +6,17 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import { Grid, InputLabel } from "@material-ui/core";
+import Header from "components/Header/Header.js";
+import HeaderLinks from "components/Header/HeaderLinks.js";
 import { FormControl } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import { Select } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -16,13 +24,17 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Axios from "axios";
+import styles2 from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
 
 const useStyles = makeStyles(styles);
+const useStyles2 = makeStyles(styles2);
 
 const SearchBar = () => {
   const [Ville, SetVille] = useState("all");
   const [Univ, SetUniv] = useState([]);
   const classes = useStyles();
+  const classes2 = useStyles2();
+
   console.log(classes);
 
   const VilleChange = (e) => {
@@ -44,6 +56,14 @@ const SearchBar = () => {
   };
 
   return (
+    <div>
+      <AppBar color="transparent">
+          <Toolbar>
+            <a href="/">
+            <img src={require('./apple-icon.png')} className={classes2.logo} />
+            </a>
+          </Toolbar>
+        </AppBar>
     <Parallax image={require("assets/img/image_3.png")}>
       <div className={classes.container}>
         <Card style={{ width: "67rem" }}>
@@ -158,6 +178,7 @@ const SearchBar = () => {
         </Card>
       </div>
     </Parallax>
+    </div>
   );
 };
 
