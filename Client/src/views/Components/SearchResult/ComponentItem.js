@@ -10,7 +10,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 330,
+    maxWidth: 310,
+    height: 330,
   },
   media: {
     height: 140,
@@ -36,7 +37,13 @@ export default function ComponentItem(props) {
             variant="body2"
             color="textSecondary"
             component="p"
-            style={{ wordWrap: "break-word" }}
+            style={{
+              textOverflow: "ellipsis",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              maxHeight: "3em",
+              lineHeight: "1em",
+            }}
           >
             {props.desc}
           </Typography>
