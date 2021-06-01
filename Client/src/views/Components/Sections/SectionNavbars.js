@@ -29,109 +29,6 @@ export default function SectionNavbars() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <div className={classes.container}>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={6}>
-            <div className={classes.title}>
-              <h3>Menu</h3>
-            </div>
-            <Header
-              brand="Menu"
-              color="primary"
-              leftLinks={
-                <List className={classes.list}>
-                  <ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      Link
-                    </Button>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      Link
-                    </Button>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <CustomDropdown
-                      buttonText="Dropdown"
-                      dropdownHeader="Dropdown Header"
-                      buttonProps={{
-                        className: classes.navLink,
-                        color: "transparent"
-                      }}
-                      dropdownList={[
-                        "Action",
-                        "Another action",
-                        "Something else here",
-                        { divider: true },
-                        "Separated link",
-                        { divider: true },
-                        "One more separated link"
-                      ]}
-                    />
-                  </ListItem>
-                </List>
-              }
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <div className={classes.title}>
-              <h3>Menu with Icons</h3>
-            </div>
-            <Header
-              brand="Icons"
-              color="info"
-              rightLinks={
-                <List className={classes.list}>
-                  <ListItem className={classes.listItem}>
-                    <Button color="transparent" className={classes.navLink}>
-                      <Email className={classes.icons} />
-                    </Button>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <Button color="transparent" className={classes.navLink}>
-                      <Face className={classes.icons} />
-                    </Button>
-                  </ListItem>
-                  <ListItem className={classes.listItem}>
-                    <CustomDropdown
-                      left
-                      hoverColor="info"
-                      dropdownHeader="Dropdown Header"
-                      buttonIcon="settings"
-                      buttonProps={{
-                        className: classes.navLink,
-                        color: "transparent"
-                      }}
-                      dropdownList={[
-                        "Action",
-                        "Another action",
-                        "Something else here",
-                        { divider: true },
-                        "Separated link",
-                        { divider: true },
-                        "One more separated link"
-                      ]}
-                    />
-                  </ListItem>
-                </List>
-              }
-            />
-          </GridItem>
-        </GridContainer>
-        <div className={classes.title}>
-          <h3>Navigation</h3>
-        </div>
-      </div>
       <div id="navbar" className={classes.navbar}>
         <div
           className={classes.navigation}
@@ -146,7 +43,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Link
@@ -156,7 +53,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Link
@@ -170,14 +67,14 @@ export default function SectionNavbars() {
                   white
                   inputRootCustomClasses={classes.inputRootCustomClasses}
                   formControlProps={{
-                    className: classes.formControl
+                    className: classes.formControl,
                   }}
                   inputProps={{
                     placeholder: "Search",
                     inputProps: {
                       "aria-label": "Search",
-                      className: classes.searchInput
-                    }
+                      className: classes.searchInput,
+                    },
                   }}
                 />
                 <Button justIcon round color="white">
@@ -195,7 +92,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink + " " + classes.navLinkActive}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Discover
@@ -205,7 +102,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Profile
@@ -215,7 +112,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Settings
@@ -233,7 +130,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink + " " + classes.navLinkActive}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     <Explore className={classes.icons} /> Discover
@@ -243,7 +140,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     <AccountCircle className={classes.icons} /> Profile
@@ -253,7 +150,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     <Icon className={classes.icons}>settings</Icon> Settings
@@ -271,7 +168,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Discover
@@ -281,7 +178,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Wishlist
@@ -293,7 +190,7 @@ export default function SectionNavbars() {
                     round
                     href="#pablo"
                     className={classes.notificationNavLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="rose"
                   >
                     <Email className={classes.icons} />
@@ -315,12 +212,12 @@ export default function SectionNavbars() {
                     buttonProps={{
                       className:
                         classes.navLink + " " + classes.imageDropdownButton,
-                      color: "transparent"
+                      color: "transparent",
                     }}
                     dropdownList={[
                       "Me",
                       "Settings and other stuff",
-                      "Sign out"
+                      "Sign out",
                     ]}
                   />
                 </ListItem>
@@ -335,7 +232,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Discover
@@ -345,7 +242,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.navLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="transparent"
                   >
                     Wishlist
@@ -355,7 +252,7 @@ export default function SectionNavbars() {
                   <Button
                     href="#pablo"
                     className={classes.registerNavLink}
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                     color="rose"
                     round
                   >

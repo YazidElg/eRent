@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import Components from "./Home/Components.js";
-import VoirPlus from "./Home/VoirPlus.js";
+import VoirPlus from "./VoirPlus/VoirPlus.js";
 
 import Header from "components/Header/Header.js";
 // sections for this page
