@@ -10,14 +10,15 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 330,
+    maxWidth: 310,
+    height: 330,
   },
   media: {
     height: 140,
   },
 });
 
-export default function ComponentItem() {
+export default function ComponentItem(props) {
   const classes = useStyles();
 
   return (
@@ -25,25 +26,35 @@ export default function ComponentItem() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.img}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {props.titre}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            style={{
+              textOverflow: "ellipsis",
+              wordWrap: "break-word",
+              overflow: "hidden",
+              maxHeight: "3em",
+              lineHeight: "1em",
+            }}
+          >
+            {props.desc}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          {props.prix}
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Voir Plus : {props.idL}
         </Button>
       </CardActions>
     </Card>

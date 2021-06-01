@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/material-kit-react/views/components.js";
 import Card from "components/Card/Card.js";
@@ -29,6 +29,9 @@ import styles2 from "assets/jss/material-kit-react/views/componentsSections/navb
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
+import { search } from "../../../actions";
+import { useDispatch } from "react-redux";
+
 const useStyles = makeStyles(styles);
 const useStyles2 = makeStyles(() => ({
   thumb: {
@@ -54,21 +57,30 @@ const useStyles2 = makeStyles(() => ({
     },
   },
 }));
+
 const SearchBar = () => {
+  const dispatch = useDispatch();
+
+  const [SearchKeyword, SetSearchKeyword] = useState("");
+  const [Categ, SetCateg] = useState("all");
+  const [Mode, SetMode] = useState("all");
+
   const [Ville, SetVille] = useState("all");
+  const [SelUniv, SetSelUniv] = useState("all");
   const [Univ, SetUniv] = useState([]);
   const classes = useStyles();
   const classes2 = useStyles2();
 
   console.log(classes);
-
-  const VilleChange = (e) => {
-    SetVille(e.target.value);
+  useEffect(() => {
+    Univupdate("all");
+  }, []);
+  const Univupdate = (ville) => {
     const config = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      params: { ville: e.target.value },
+      params: { ville: ville },
     };
     Axios.get("http://localhost:3001/University", config)
       .then((result) => {
@@ -80,17 +92,51 @@ const SearchBar = () => {
       });
   };
 
-  const [value, setValue] = React.useState([20, 37]);
+  const Submit = () => {
+    Axios.post("http://localhost:3001/Search", {
+      search: SearchKeyword,
+      mode: Mode,
+      city: Ville,
+      univ: SelUniv,
+      Catg: Categ,
+      supL: value2[0],
+      supU: value2[1],
+      prL: value[0],
+      prU: value[1],
+    }).then((result) => {
+      console.log(result.data.res);
+      if (result.data.msg == 0) dispatch(search(result.data.res));
+    });
+  };
 
+  const VilleChange = (e) => {
+    SetVille(e.target.value);
+    SetSelUniv("all");
+    Univupdate(e.target.value);
+  };
+
+  const SearchChange = (e) => {
+    SetSearchKeyword(e.target.value);
+  };
+  const ModeChange = (e) => {
+    SetMode(e.target.value);
+  };
+  const CatChange = (e) => {
+    SetCateg(e.target.value);
+  };
+  const SelUnivChange = (e) => {
+    SetSelUniv(e.target.value);
+  };
+
+  const [value, setValue] = React.useState([1000, 8000]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const [value2, setValue2] = React.useState([20, 37]);
-
+  const [value2, setValue2] = React.useState([50, 400]);
   const handleChange2 = (event, newValue) => {
     setValue2(newValue);
   };
+
   return (
     <div>
       <AppBar color="transparent">
@@ -161,7 +207,6 @@ const SearchBar = () => {
                       </FormControl>
                     </Grid>
                   </Grid>
-
                   <Grid>
                     <Grid item xs={12} sm={12} md={3}>
                       <FormControl className={classes.formControl}>
