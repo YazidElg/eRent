@@ -11,7 +11,7 @@ const navbarsStyle = theme => ({
     ...title,
     marginTop: "30px",
     minHeight: "32px",
-    textDecoration: "none"
+    position:"center"
   },
   navbar: {
     marginBottom: "-20px",
@@ -51,6 +51,11 @@ const navbarsStyle = theme => ({
     top: "4px",
     borderRadius: "50%",
     marginLeft: "5px"
+  },
+  logo: {
+    maxWidth: 70,
+    marginRight: '10px',
+    position:"center"
   }
 });
 

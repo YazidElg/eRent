@@ -41,6 +41,17 @@ const componentsStyle = {
   selectEmpty: {
     marginTop: 0,
   },
+  Card:{
+    marginAuto: {
+      marginRight: "auto !important",
+      
+    },
+    marginTop: "100px"
+  },
+  cardTitle:{
+    textAlign :"center",
+    fontWeight: "bold"
+  }
 };
 
 export default componentsStyle;

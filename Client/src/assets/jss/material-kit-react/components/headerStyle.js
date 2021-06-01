@@ -52,7 +52,6 @@ const headerStyle = {
     flex: 1
   },
   title: {
-    ...defaultFont,
     lineHeight: "30px",
     fontSize: "18px",
     borderRadius: "3px",
@@ -60,6 +59,7 @@ const headerStyle = {
     color: "inherit",
     padding: "8px 16px",
     letterSpacing: "unset",
+    textAlign: "center",
     "&:hover,&:focus": {
       color: "inherit",
       background: "transparent"
