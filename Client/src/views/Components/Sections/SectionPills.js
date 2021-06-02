@@ -14,96 +14,68 @@ import NavPills from "components/NavPills/NavPills.js";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/pillsStyle.js";
 import MyMap from "../MyMap";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(styles);
 
-export default function SectionPills() {
+export default function SectionPills(props) {
   const classes = useStyles();
+  console.log(props.logement);
   return (
-    
-      <div className={classes.container}>
-        <div id="navigation-pills">
-          <div className={classes.title}>
-            <h3>Studio pour étudiants à salé</h3>
-          </div>
-         
-          
-              <NavPills
-                color="primary"
-                tabs={[
-                  {
-                    tabButton: "Info",
-                    tabIcon: Info,
-                    tabContent: (
-                      <span>
-                        <p>
-                        Appartements meublés de 1 à 2 personnes  25 m². À proximité de Carrefour et 
-                        de l'école supérieur de technologie de salé, avec wifi et salle de bain
-
-                        </p>
-                        <br />
-                        <p>
-                        Situé à madinat el irfan je vous propose ce studio entièrement meublé et équipé. 
-                        il est exposé ouest au 6ème étage avec ascenseur d'un immeuble ancien. 
-                        une service conciergerie fait parti du forfait. 
-                        a peine vos valises posés, vous sentirez déjà chez vous !
-                        Situé à madinat el irfan je vous propose ce studio entièrement meublé et équipé. 
-                        il est exposé ouest au 6ème étage avec ascenseur d'un immeuble ancien. 
-                        une service conciergerie fait parti du forfait. 
-                        a peine vos valises posés, vous sentirez déjà chez vous !
-                        Situé à madinat el irfan je vous propose ce studio entièrement meublé et équipé. 
-                        il est exposé ouest au 6ème étage avec ascenseur d'un immeuble ancien. 
-                        une service conciergerie fait parti du forfait. 
-                        a peine vos valises posés, vous sentirez déjà chez vous !
-                        </p>
-                      </span>
-                    ),
-                  },
-                  {
-                    tabButton: "Critères",
-                    tabIcon: LibraryAdd,
-                    tabContent: (
-                     
-                     
-                       <Grid container>
-                         <Grid item xs={3}>
-                         <img src={require('../VoirPlus/furnitures.png')} />  Meublé ou pas meublé ?
-                         <h2>Meublé</h2>
-                         </Grid>
-                         <Grid item xs={3}>
-                         <img src={require('../VoirPlus/area.png')} />  Surface :
-                         <h2>25 m²</h2>
-                         </Grid>
-                         <Grid item xs={3}>
-                         <img src={require('../VoirPlus/appartment.png')} />  Type de logement : 
-                         <h2>Studio</h2>
-                         </Grid>
-                         <Grid item xs={3}>
-                         <img src={require('../VoirPlus/room.png')} />  Nombres de chambres : 
-                         <h2>2</h2>
-                         </Grid>
-                       </Grid>
-                     
-                    ),
-                  },
-                  {
-                    tabButton: "Map",
-                    tabIcon: Map,
-                    tabContent: (
-                      <span>
-                        
-                      </span>
-                        
-          
-                      
-                    ),
-                  },
-                ]}
-              />
-           
+    <div className={classes.container}>
+      <div id="navigation-pills">
+        <div className={classes.title}>
+          <h3>{props.logement.titre ? props.logement.titre : ""}</h3>
         </div>
+
+        <NavPills
+          color="primary"
+          tabs={[
+            {
+              tabButton: "Info",
+              tabIcon: Info,
+              tabContent: (
+                <span>
+                  <p>
+                    {props.logement.description
+                      ? props.logement.description
+                      : ""}
+                  </p>
+                </span>
+              ),
+            },
+            {
+              tabButton: "Critères",
+              tabIcon: LibraryAdd,
+              tabContent: (
+                <Grid container>
+                  <Grid item xs={3}>
+                    <img src={require("../VoirPlus/furnitures.png")} /> Meublé
+                    ou pas meublé ?<h2>Meublé</h2>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <img src={require("../VoirPlus/area.png")} /> Surface :
+                    <h2>25 m²</h2>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <img src={require("../VoirPlus/appartment.png")} /> Type de
+                    logement :<h2>Studio</h2>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <img src={require("../VoirPlus/room.png")} /> Nombres de
+                    chambres :<h2>2</h2>
+                  </Grid>
+                </Grid>
+              ),
+            },
+            {
+              tabButton: "Map",
+              tabIcon: Map,
+              tabContent: <span></span>,
+            },
+          ]}
+        />
       </div>
-   
+    </div>
   );
 }

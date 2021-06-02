@@ -16,7 +16,11 @@ const Index = (props) => {
   return (
     <>
       <Switch>
-        <Route path="/Search/:id" exact render={(props) => <VoirPlus />} />
+        <Route
+          path="/Search/:id"
+          exact
+          render={(props) => <VoirPlus {...props} />}
+        />
         <Route
           path="/Search"
           exact

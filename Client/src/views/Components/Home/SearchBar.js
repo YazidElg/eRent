@@ -24,15 +24,15 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Axios from "axios";
-import styles2 from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
+import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
 
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
 import { search } from "../../../actions";
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles(styles);
+const useStyles3 = makeStyles(navbarsStyle);
 const useStyles2 = makeStyles(() => ({
   thumb: {
     background: "#ff871c",
@@ -70,6 +70,7 @@ const SearchBar = () => {
   const [Univ, SetUniv] = useState([]);
   const classes = useStyles();
   const classes2 = useStyles2();
+  const classes3 = useStyles3();
 
   console.log(classes);
   useEffect(() => {
@@ -138,14 +139,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
-      <AppBar color="transparent">
-        <Toolbar>
-          <a href="/">
-            <img src={require("./apple-icon.png")} className={classes2.logo} />
-          </a>
-        </Toolbar>
-      </AppBar>
+    <>
       <Parallax image={require("assets/img/image_3.png")}>
         <div className={classes.container}>
           <Card style={{ width: "67rem" }}>
@@ -161,6 +155,8 @@ const SearchBar = () => {
                       inputProps={{
                         placeholder: "Université, logement ...",
                       }}
+                      value={SearchKeyword}
+                      onChange={SearchChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -175,6 +171,8 @@ const SearchBar = () => {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
+                          value={SelUniv}
+                          onChange={SelUnivChange}
                         >
                           <MenuItem value="all">Tous</MenuItem>
                           {Univ.map((univ, index) => (
@@ -207,6 +205,7 @@ const SearchBar = () => {
                       </FormControl>
                     </Grid>
                   </Grid>
+
                   <Grid>
                     <Grid item xs={12} sm={12} md={3}>
                       <FormControl className={classes.formControl}>
@@ -216,7 +215,10 @@ const SearchBar = () => {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
+                          value={Mode}
+                          onChange={ModeChange}
                         >
+                          <MenuItem value="all">Tous</MenuItem>
                           <MenuItem value="Location">Location</MenuItem>
                           <MenuItem value="Colocation">Colocation</MenuItem>
                         </Select>
@@ -230,15 +232,18 @@ const SearchBar = () => {
                           Categorie
                         </InputLabel>
                         <Select
+                          value={Categ}
+                          onChange={CatChange}
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
                         >
+                          <MenuItem value="all">Tous</MenuItem>
                           <MenuItem value="Appartement">Appartement</MenuItem>
                           <MenuItem value="Studio">Studio</MenuItem>
-                          <MenuItem value="Residence étudiants">
+                          <MenuItem value="Residence">
                             Residence étudiants
                           </MenuItem>
-                          <MenuItem value="Cité universitaire">
+                          <MenuItem value="CiteUniv">
                             Cité universitaire
                           </MenuItem>
                         </Select>
@@ -250,6 +255,9 @@ const SearchBar = () => {
                       Prix
                     </Typography>
                     <Slider
+                      min={0}
+                      step={500}
+                      max={10000}
                       classes={classes2}
                       value={value}
                       onChange={handleChange}
@@ -260,6 +268,9 @@ const SearchBar = () => {
                       Surface
                     </Typography>
                     <Slider
+                      min={0}
+                      step={25}
+                      max={500}
                       classes={classes2}
                       value={value2}
                       onChange={handleChange2}
@@ -270,13 +281,15 @@ const SearchBar = () => {
                 </GridContainer>
               </Grid>
               <Link to="/Search">
-                <Button color="warning">Rechercher</Button>
+                <Button color="warning" onClick={Submit}>
+                  Rechercher
+                </Button>
               </Link>
             </CardBody>
           </Card>
         </div>
       </Parallax>
-    </div>
+    </>
   );
 };
 

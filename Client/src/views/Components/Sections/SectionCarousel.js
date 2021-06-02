@@ -18,7 +18,7 @@ import styles from "assets/jss/material-kit-react/views/componentsSections/carou
 
 const useStyles = makeStyles(styles);
 
-export default function SectionCarousel() {
+export default function SectionCarousel(props) {
   const classes = useStyles();
   const settings = {
     dots: true,
@@ -35,19 +35,11 @@ export default function SectionCarousel() {
           <GridItem xs={12}>
             <Card carousel>
               <Carousel {...settings}>
-                <div>
-                  <img src={image1} alt="First slide" className="slick-image" />
-                </div>
-                <div>
-                  <img
-                    src={image2}
-                    alt="Second slide"
-                    className="slick-image"
-                  />
-                </div>
-                <div>
-                  <img src={image3} alt="Third slide" className="slick-image" />
-                </div>
+                {props.images.map((img, index) => (
+                  <div key={index}>
+                    <img src={img.lien} alt={index} className="slick-image" />
+                  </div>
+                ))}
               </Carousel>
             </Card>
           </GridItem>

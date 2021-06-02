@@ -8,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 310,
@@ -53,9 +55,11 @@ export default function ComponentItem(props) {
         <Button size="small" color="primary">
           {props.prix}
         </Button>
-        <Button size="small" color="primary">
-          Voir Plus : {props.idL}
-        </Button>
+        <Link to={`/Search/${props.idL}`}>
+          <Button size="small" color="primary">
+            Voir Plus : {props.idL}
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

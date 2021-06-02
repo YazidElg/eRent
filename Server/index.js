@@ -88,19 +88,40 @@ app.post("/deposer", (req, res) => {
   );
 });
 
-app.post("/voirdetaillogement", (req, res) => {
+app.post("/seemore", (req, res) => {
   console.log(req.body);
-  const nomE = req.body.nom;
-  const prenomE = req.body.prenom;
-  const telephoneE = req.body.telephone;
-  const emailE = req.body.email;
-  const periodeE = req.body.periode;
+  const id_loc = req.body.logement;
+  console.log(id_loc);
 
   db.query(
-    "INSERT INTO reservation (nomE, prenomE, telephoneE, emailE, periodeE) VALUES (?,?,?,?,?)",
-    [nomE, prenomE, telephoneE, emailE, periodeE],
+    "Select * from location where id_loc = ? ",
+    [id_loc],
     (err, result) => {
-      console.log(err);
+      console.log(result);
+      db.query(
+        "Select * from loueur where id_user = ? ",
+        [result[0].id_user],
+        (err2, result2) => {
+          db.query(
+            "Select lien from images where id_loc = ? ",
+            [id_loc],
+            (err3, result3) => {
+              res.send({
+                details: result[0],
+                loueur: result2[0],
+                images: result3.length
+                  ? result3
+                  : [
+                      {
+                        lien: "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png",
+                      },
+                    ],
+                msg: 0,
+              });
+            }
+          );
+        }
+      );
     }
   );
 });
