@@ -13,7 +13,7 @@ import GridItem from "components/Grid/GridItem.js";
 import NavPills from "components/NavPills/NavPills.js";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/pillsStyle.js";
-import MyMap from "../MyMap";
+import MyMap from "../VoirPlus/MyMap";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(styles);
@@ -71,7 +71,14 @@ export default function SectionPills(props) {
             {
               tabButton: "Map",
               tabIcon: Map,
-              tabContent: <span></span>,
+              tabContent: (
+                <MyMap
+                  markers={{
+                    lat: parseFloat(props.logement.latitude_loc),
+                    lng: parseFloat(props.logement.longitude_loc),
+                  }}
+                />
+              ),
             },
           ]}
         />

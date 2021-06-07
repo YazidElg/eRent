@@ -5,7 +5,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+import Button from "components/CustomButtons/Button.js";
+import Badge from "components/Badge/Badge.js";
 import Typography from "@material-ui/core/Typography";
 
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: 310,
-    height: 330,
+    height: 310,
   },
   media: {
     height: 140,
@@ -26,14 +27,16 @@ export default function ComponentItem(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.img}
-          title="Contemplative Reptile"
-        />
+        <Link to={`/Search/${props.idL}`}>
+          <CardMedia
+            className={classes.media}
+            image={props.img}
+            title="Contemplative Reptile"
+          />
+        </Link>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.titre}
+            {props.titre} <br /> <Badge color="warning">{props.prix} Dh</Badge>
           </Typography>
           <Typography
             variant="body2"
@@ -51,16 +54,6 @@ export default function ComponentItem(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          {props.prix}
-        </Button>
-        <Link to={`/Search/${props.idL}`}>
-          <Button size="small" color="primary">
-            Voir Plus : {props.idL}
-          </Button>
-        </Link>
-      </CardActions>
     </Card>
   );
 }

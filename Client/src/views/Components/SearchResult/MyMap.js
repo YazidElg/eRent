@@ -8,6 +8,8 @@ import {
 } from "@react-google-maps/api";
 import Skeleton from "@material-ui/lab/Skeleton";
 
+import ComponentItem from "./ComponentItem";
+
 import MarkLogo from "../../../assets/img/homeicon.png";
 const containerStyle = {
   height: "700px",
@@ -54,6 +56,8 @@ function MyMap(props) {
     setMap(null);
   }, []);
 
+  const [selectedCenter, setSelectedCenter] = useState(null);
+
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -63,12 +67,38 @@ function MyMap(props) {
       onUnmount={onUnmount}
     >
       {props.markers.map((pos, index) => (
-        <Marker key={index} position={pos} icon={MarkLogo}></Marker>
+        <Marker
+          key={index}
+          position={pos}
+          clickable
+          onClick={() => {
+            setSelectedCenter({ ...pos, index: index });
+          }}
+          icon={MarkLogo}
+        ></Marker>
       ))}
+      {selectedCenter && (
+        <InfoWindow
+          onCloseClick={() => {
+            setSelectedCenter(null);
+          }}
+          position={{
+            lat: selectedCenter.lat,
+            lng: selectedCenter.lng,
+          }}
+        >
+          <ComponentItem
+            titre={props.datas[selectedCenter.index].titre}
+            prix={props.datas[selectedCenter.index].prix}
+            idL={props.datas[selectedCenter.index].id_loc}
+            desc={props.datas[selectedCenter.index].description}
+            img={props.datas[selectedCenter.index].image}
+          />
+        </InfoWindow>
+      )}
     </GoogleMap>
   ) : (
     <Skeleton variant="rect" animation="wave" />
   );
 }
-
 export default MyMap;

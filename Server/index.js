@@ -39,7 +39,7 @@ app.post("/Search", (req, res) => {
   Univget =
     Univ == "all"
       ? ""
-      : ",getDistance(latitude_loc,longitude_loc, '" + Univ + "') as distance";
+      : ', getDistance(latitude_loc,longitude_loc, "' + Univ + '") as distance';
   UnivHav = Univ == "all" ? "" : " HAVING distance < 1.5 ORDER BY distance";
   md = mode == "all" ? "" : " and mode = '" + mode + "' ";
   ct = Catg == "all" ? "" : " and type = '" + Catg + "' ";
@@ -65,6 +65,7 @@ app.post("/Search", (req, res) => {
     ct +
     cit +
     UnivHav;
+  console.log(sql2);
   db.query(sql2, [prL, prU, supL, supU], (err, result2) => {
     if (err) console.log(err);
     else res.send({ res: result2, msg: 0 });

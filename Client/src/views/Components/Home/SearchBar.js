@@ -98,7 +98,7 @@ const SearchBar = () => {
       search: SearchKeyword,
       mode: Mode,
       city: Ville,
-      univ: SelUniv,
+      univ: SelUniv == "all" ? SelUniv : Univ[SelUniv].nom,
       Catg: Categ,
       supL: value2[0],
       supU: value2[1],

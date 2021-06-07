@@ -3,15 +3,16 @@ import { Route, Switch, Link } from "react-router-dom";
 import Components from "./Home/Components.js";
 import VoirPlus from "./VoirPlus/VoirPlus.js";
 
-import Header from "components/Header/Header.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
 
 import SearchBar from "./Home/SearchBar.js";
 import Result from "./SearchResult";
+import Header from "./Header/Header";
 
 const Index = (props) => {
   const { ...rest } = props;
+  const dashboardRoutes = [];
 
   return (
     <>
@@ -27,6 +28,8 @@ const Index = (props) => {
           render={() => (
             <>
               <SearchBar />
+              <br />
+              <br />
               <Result {...props} />
             </>
           )}
@@ -37,6 +40,8 @@ const Index = (props) => {
           render={(props) => (
             <>
               <SearchBar />
+              <br />
+              <br />
               <Components {...props} />
             </>
           )}
