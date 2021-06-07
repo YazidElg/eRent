@@ -17,7 +17,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.js";
 
 import team1 from "assets/img/faces/avatar.jpg";
-import team2 from "assets/img/faces/christian.jpg";
+import team2 from "assets/img/faces/christian.png";
 import team3 from "assets/img/faces/kendall.jpg";
 
 const useStyles = makeStyles(styles);
@@ -40,9 +40,9 @@ export default function TeamSection() {
                 <img src={team1} alt="..." className={imageClasses} />
               </GridItem>
               <h4 className={classes.cardTitle}>
-               Egharbi Yazid
+                Egharbi Yazid
                 <br />
-                <small className={classes.smallTitle}>Model</small>
+                <small className={classes.smallTitle}>Etudiant Iam</small>
               </h4>
               <CardBody>
                 <p className={classes.description}>
@@ -85,7 +85,7 @@ export default function TeamSection() {
               <h4 className={classes.cardTitle}>
                 Nabil Bakour
                 <br />
-                <small className={classes.smallTitle}>Designer</small>
+                <small className={classes.smallTitle}>Etudiant Iam</small>
               </h4>
               <CardBody>
                 <p className={classes.description}>
@@ -121,7 +121,7 @@ export default function TeamSection() {
               <h4 className={classes.cardTitle}>
                 Ayman El Kaddioui
                 <br />
-                <small className={classes.smallTitle}>Model</small>
+                <small className={classes.smallTitle}>Etudiant Iam</small>
               </h4>
               <CardBody>
                 <p className={classes.description}>

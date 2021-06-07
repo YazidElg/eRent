@@ -17,7 +17,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
-import profile from "assets/img/faces/christian.jpg";
+import profile from "assets/img/faces/christian.png";
 
 import studio1 from "assets/img/examples/studio-1.jpg";
 import studio2 from "assets/img/examples/studio-2.jpg";
@@ -52,7 +52,7 @@ export default function ProfilePage(props) {
         fixed
         changeColorOnScroll={{
           height: 200,
-          color: "white"
+          color: "white",
         }}
         {...rest}
       />
@@ -126,7 +126,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Work",
@@ -163,7 +163,7 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
+                      ),
                     },
                     {
                       tabButton: "Favorite",
@@ -200,8 +200,8 @@ export default function ProfilePage(props) {
                             />
                           </GridItem>
                         </GridContainer>
-                      )
-                    }
+                      ),
+                    },
                   ]}
                 />
               </GridItem>
